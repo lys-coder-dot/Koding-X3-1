@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Frameworks</title>
+  <style>
+    body { font-family: times; max-width: 700px; margin: 30px auto; padding: 0 20px; }
+    h1 { color: #000; }
+    .card { border: 1px solid #ff9090; border-radius: 8px; padding: 10px; margin: 10px 0; overflow: hidden; }
+    .card img { width: 100px; height: 100px; object-fit: contain; float: left; }
+    .card h2 { margin: 0 0 6px 0; }
+    .card p { margin: 0 0 10px 0; color: #ff6767; font-size: 14px; }
+    .badge { display: inline-block; background: #ff9e6e; border-radius: 100px; padding: 2px 8px; font-size: 12px; margin-right: 4px; }
+  </style>
+</head>
+<body>
+  <h1>Adalah Pokoknya</h1>
+  <h2> Priska Ellysia Yusuf</h2>
+  <h3>jangan terlalu dipikirin si</h3>
+  <h4>Hari ini kita mempelajari seputar code ini. Code yang terdiri dari HTML, JavaScript, API, dan yang lainnya. Selain itu, aku jadi lebih mengerti tentang coding, seperti apa fungsinya style, foreach, title , dan lain lain. Ada juga hal yang dapat dianalisa perbedaannya, seperti h1, h2, h3, dst; h1 akan lebih besar daripada h2 dan seterusnya sesuai dengan angka di belakang h-nya. Sebenernya masih banyak lagi tapi sepertinya sudah kepanjangan.</h4>
+  <div id="list">Loading...</div>
+
+  <script>
+    fetch("https://pb-irc.artesparadox.net/api/collections/js_framework/records")
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        var list = document.getElementById("list");
+        list.innerHTML = "";
+        data.items.forEach(function(fw) {
+          list.innerHTML += "<div class='card'>" +
+            "<img src='" + fw.logo + "' alt='" + fw.name + "'>" +
+            "<h2>" + fw.name + "</h2>" +
+            "<p>" + fw.description + "</p>" +
+            "<span class='badge'>Age: " + fw.age + "</span>" +
+            "<span class='badge'>Complexity: " + fw.complexity + "</span>" +
+            "</div>";
+        });
+      });
+  </script>
+</body>
+</html>
